@@ -81,7 +81,7 @@ public class Grid extends JPanel {
                             yOffset + (row * cellHeight),
                             cellWidth,
                             cellHeight);
-                    cells.add(cell);
+                    cells.add(row * n + col, cell); //just making sure that the index is correct for later use
                 }
             }
         }
@@ -102,7 +102,7 @@ public class Grid extends JPanel {
 
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
-                Rectangle cell = cells.get((i + 1) * (j + 1) - 1); //this is wrong!!!!
+                Rectangle cell = cells.get(i * n + j); //get the index from the array values
 
                 if (PlayGround.getGameArray()[i][j]) {
                     g2d.setColor(Color.BLACK);
@@ -115,12 +115,6 @@ public class Grid extends JPanel {
                 }
             }
         }
-
-        /*g2d.setColor(Color.GRAY);
-        for (Rectangle cell : cells) {
-            g2d.draw(cell);
-        }
-        */
         g2d.dispose();
     }
 

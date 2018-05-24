@@ -5,10 +5,9 @@ public class Main {
 
     //this just starts the app
     public static void main(String[] args) {
-        PlayGround.init(25);
+        PlayGround.init(100);
         new Main();
     }
-
 
     public Main() {
         EventQueue.invokeLater(() -> { //that's pretty amazing that arrow there replaces a whole call to a new sth and function head
