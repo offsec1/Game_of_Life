@@ -5,8 +5,9 @@ public class PlayGround {
     private static int n;
     private static boolean[][] gameArray;
 
-    public static void setN(int n) {
-        PlayGround.n = n;
+    public static void setN(int fieldLen) {
+        n = fieldLen;
+        //TODO PM: resize the array
     }
 
     public static int getN() {

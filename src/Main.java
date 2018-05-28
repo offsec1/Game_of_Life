@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Main {
 
+    //TODO PM: probably use only one panel class... GUI because all the components are somehow connected
     //this just starts the app
     public static void main(String[] args) {
         PlayGround.init(100);
@@ -19,16 +20,10 @@ public class Main {
             }
 
             JFrame frame = new JFrame("Conway's Game of Life - by offsec1");
-            //frame.setContentPane(new JPanel());
+            frame.setSize(600, 600);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLayout(new GridBagLayout());
-            frame.add(new Grid());
-            /*
-            Here comes the whole add thing maybe also for
-            - Button
-            - Timer (which does all the things)
-            - etc.
-             */
+            frame.add(new GridPanel(), BorderLayout.CENTER);
+            frame.add(new ControlPanel(), BorderLayout.SOUTH);
             frame.pack();
             frame.setLocationRelativeTo(null); //start position is middle of the screen
             frame.setVisible(true);

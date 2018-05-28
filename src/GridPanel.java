@@ -7,14 +7,18 @@ import java.util.List;
 
 //TODO PM: resizing doesn't work at all this needs to be fixed
 
-public class Grid extends JPanel {
+public class GridPanel extends JPanel {
 
     private int n = PlayGround.getN(); // this needs to be changed in the long run...
     private List<Rectangle> cells;
     private Point selectedCell;
 
-    public Grid() {
+    public GridPanel() {
 
+        //Panel stuff
+        setPreferredSize(new Dimension(500, 502));
+
+        //Grid stuff
         cells = new ArrayList<>(n * n);
         MouseAdapter clickHandler;
         clickHandler = new MouseAdapter() {
@@ -45,12 +49,9 @@ public class Grid extends JPanel {
             }
         };
         addMouseListener(clickHandler);
+
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(500, 500);
-    }
 
     @Override
     public void invalidate() {
@@ -85,19 +86,11 @@ public class Grid extends JPanel {
                 }
             }
         }
-        //you have to sync your list 'cells' to the boolean array
 
         if (selectedCell != null) {
             int index = selectedCell.x + (selectedCell.y * n);
 
-            //that's probably not the right calculation
             PlayGround.changeIndexValue(index / n, index % n);
-
-            /*
-            Rectangle cell = cells.get(index);
-            g2d.setColor(Color.BLACK);
-            g2d.fill(cell);
-            */
         }
 
         for(int i = 0; i < n; i++) {
