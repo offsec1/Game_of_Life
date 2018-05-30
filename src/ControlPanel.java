@@ -49,7 +49,7 @@ public class ControlPanel extends JPanel {
         };
         //TODO PM: here you have to make one year passed (makeMove on Playground)
 
-        timer = new Timer(100, tickEvent);
+        timer = new Timer(10, tickEvent);
         timer.setRepeats(true);
     }
 

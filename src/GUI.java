@@ -44,7 +44,6 @@ public class GUI extends JPanel {
 
                 selectedCell = null;
 
-                //whats the 5s?
                 if (e.getX() >= xOffset && e.getY() >= yOffset) {
                     int column = (e.getX() - xOffset) / cellWidth;
                     int row = (e.getY() - yOffset) / cellHeight;
@@ -82,15 +81,16 @@ public class GUI extends JPanel {
 
         //Timer
         ActionListener tickEvent = e -> {
-            PlayGround.changeIndexValue(0,0);
-            //here needs to be the grid repainted...
+            //Live goes on
+            PlayGround.evolve();
             repaint();
             invalidate();
             System.out.print("Test\n");
+
         };
         //TODO PM: here you have to make one year passed (makeMove on Playground)
 
-        timer = new Timer(100, tickEvent);
+        timer = new Timer(10, tickEvent);
         timer.setRepeats(true);
     }
 
