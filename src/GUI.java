@@ -77,7 +77,6 @@ public class GUI extends JPanel {
             System.out.print("Test\n");
 
         };
-        //TODO PM: here you have to make one year passed (makeMove on Playground)
 
         timer = new Timer(10, tickEvent);
         timer.setRepeats(true);

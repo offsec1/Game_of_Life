@@ -3,7 +3,6 @@ import java.awt.*;
 
 public class Main {
 
-    //TODO PM: probably use only one panel class... GUI because all the components are somehow connected
     //this just starts the app
     public static void main(String[] args) {
         PlayGround.init(100);

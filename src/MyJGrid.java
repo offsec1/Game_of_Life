@@ -7,7 +7,6 @@ import java.util.List;
 
 public class MyJGrid extends JComponent {
 
-    //private int n = PlayGround.getN(); // this needs to be changed by the slider
     private List<Rectangle> cells;
     private Point selectedCell;
 
