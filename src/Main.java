@@ -21,7 +21,7 @@ public class Main {
 
             JFrame frame = new JFrame("Conway's Game of Life - by offsec1");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(new GUI(), BorderLayout.CENTER);
+            frame.add(new GUI());
             frame.pack();
             frame.setLocationRelativeTo(null); //start position is middle of the screen
             frame.setVisible(true);

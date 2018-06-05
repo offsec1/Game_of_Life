@@ -8,7 +8,8 @@ public class PlayGround {
 
     public static void setN(int fieldLen) {
         n = fieldLen;
-        //TODO PM: resize the array
+        gameArray = new boolean[n][n];
+        //Arrays.fill(gameArray, Boolean.FALSE);
     }
 
     public static int getN() {
