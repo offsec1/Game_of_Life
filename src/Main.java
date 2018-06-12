@@ -5,7 +5,7 @@ public class Main {
 
     //this just starts the app
     public static void main(String[] args) {
-        PlayGround.init(100);
+        PlayGround.init(50);
         new Main();
     }
 
