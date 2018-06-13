@@ -17,7 +17,7 @@ public class GUI extends JPanel {
 
         //Panel stuff
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(600, 600));
+        setPreferredSize(new Dimension(650, 650));
 
         //Grid stuff
         initGrid();
