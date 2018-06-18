@@ -1,23 +1,25 @@
+import java.util.Arrays;
+
 public class PlayGround {
+
+    private static final int OFFSET = 1; //this is done because the edges are complicated to handle (that's the nicest way I recon)
 
     private static int n;
     private static boolean[][] gameArray;
     private static boolean[][] evolvedArray;
 
     public static void setN(int fieldLen) {
-        n = fieldLen;
+        n = fieldLen + OFFSET;
         gameArray = new boolean[n][n];
-        //Arrays.fill(gameArray, Boolean.FALSE);
     }
 
     public static int getN() {
-        return n;
+        return n - OFFSET;
     }
 
     public static boolean[][] getGameArray() {
         if (gameArray == null) {
             gameArray = new boolean[n][n];
-            //Arrays.fill(gameArray, Boolean.FALSE);
         }
         return gameArray;
     }
@@ -27,8 +29,13 @@ public class PlayGround {
     }
 
     public static void init(int fieldLen) {
-        n = fieldLen;
+        n = fieldLen + OFFSET;
         gameArray = new boolean[n][n];
+    }
+
+    public static void clearGameArray() {
+        for (int i = 0; i < n; i++)
+            Arrays.fill(gameArray[i], false);
     }
 
     /**
@@ -38,14 +45,15 @@ public class PlayGround {
 
         evolvedArray = copyArray(gameArray);
 
-        for(int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++)
             for (int j = 0; j < n; j++) {
 
                 int countNeighbours = 0;
 
                 //I'm at the edge so something has to work different...
-                if (i == 0 || j == 0 || i == n-1 || j == n-1) {
-                    //TODO PM: either do this or make the game array bigger
+                if (i == 0 || j == 0 || i == n - 1 || j == n - 1) {
+                    //This means I'm ignoring the edges there are many other ways to handle this
+                    //I like it more the way this works now than having a bigger array or something else
                 }
                 //check the neighbours
                 else {
@@ -79,7 +87,6 @@ public class PlayGround {
                 if (!gameArray[i][j] && countNeighbours == 3)
                     evolvedArray[i][j] = !evolvedArray[i][j];
             }
-        }
 
         gameArray = copyArray(evolvedArray);
     }
@@ -97,6 +104,87 @@ public class PlayGround {
             dest[i] = src[i].clone();
 
         return dest;
+    }
+
+    public static void spawnGlider() {
+        int middle = n / 2 - 1;
+
+        changeIndexValue(middle, middle);
+        middle++;
+        changeIndexValue(middle, middle);
+        changeIndexValue(middle + 1, middle);
+        changeIndexValue(middle + 1, middle - 1);
+        changeIndexValue(middle + 1, middle - 2);
+    }
+
+    public static void spawnSmallExploder() {
+        int middle = n / 2 - 1;
+
+        changeIndexValue(middle, middle);
+        changeIndexValue(middle, middle + 1);
+        changeIndexValue(middle, middle - 1);
+        changeIndexValue(middle - 1, middle);
+        changeIndexValue(middle + 1, middle - 1);
+        changeIndexValue(middle + 1, middle + 1 );
+        changeIndexValue(middle + 2, middle);
+    }
+
+    public static void spawnExploder() {
+        int middle = n / 2 - 1;
+
+        changeIndexValue(middle + 2, middle);
+        changeIndexValue(middle - 2, middle);
+        changeIndexValue(middle, middle + 2);
+        changeIndexValue(middle - 1, middle + 2);
+        changeIndexValue(middle - 2, middle + 2);
+        changeIndexValue(middle + 1, middle + 2);
+        changeIndexValue(middle + 2, middle + 2);
+        changeIndexValue(middle, middle - 2);
+        changeIndexValue(middle - 1, middle - 2);
+        changeIndexValue(middle - 2, middle - 2);
+        changeIndexValue(middle + 1, middle - 2);
+        changeIndexValue(middle + 2, middle - 2);
+    }
+
+    public static void spawnSpaceShip() {
+        int middle = n / 2 - 1;
+
+        changeIndexValue(middle + 1, middle + 1);
+        changeIndexValue(middle, middle + 2);
+        changeIndexValue(middle - 1, middle + 2);
+        changeIndexValue(middle - 2, middle + 2);
+        changeIndexValue(middle - 2, middle + 1);
+        changeIndexValue(middle - 2, middle);
+        changeIndexValue(middle - 2, middle - 1);
+        changeIndexValue(middle - 1, middle - 2);
+        changeIndexValue(middle + 1, middle - 2);
+    }
+
+    public static void spawnTumbler() {
+        int middle = n / 2 - 1;
+
+        changeIndexValue(middle, middle + 1);
+        changeIndexValue(middle, middle - 1);
+        changeIndexValue(middle + 1, middle + 1);
+        changeIndexValue(middle + 1, middle - 1);
+        changeIndexValue(middle - 1, middle + 1);
+        changeIndexValue(middle - 1, middle - 1);
+        changeIndexValue(middle - 2, middle + 1);
+        changeIndexValue(middle - 2, middle - 1);
+        changeIndexValue(middle + 2, middle + 1);
+        changeIndexValue(middle + 2, middle - 1);
+        changeIndexValue(middle + 3, middle - 2);
+        changeIndexValue(middle + 3, middle - 3);
+        changeIndexValue(middle + 3, middle + 2);
+        changeIndexValue(middle + 3, middle + 3);
+        changeIndexValue(middle + 2, middle + 3);
+        changeIndexValue(middle + 1, middle + 3);
+        changeIndexValue(middle + 2, middle - 3);
+        changeIndexValue(middle + 1, middle - 3);
+        changeIndexValue(middle - 1, middle - 2);
+        changeIndexValue(middle - 2, middle - 2);
+        changeIndexValue(middle - 2, middle + 2);
+        changeIndexValue(middle - 1, middle + 2);
     }
 
 }

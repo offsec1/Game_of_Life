@@ -15,11 +15,11 @@ public class GUI extends JPanel {
 
     public GUI() {
 
-        //Panel stuff
+        //Panel settings
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(600, 600));
 
-        //Grid stuff
+        //Grid
         initGrid();
         add(grid, BorderLayout.PAGE_START);
 
@@ -27,7 +27,7 @@ public class GUI extends JPanel {
         initButton();
         add(startButton, BorderLayout.LINE_END);
 
-        //Lable
+        //Label
         gridLabel = new JLabel("Grid: 50x50");
         add(gridLabel, BorderLayout.LINE_START);
 
@@ -55,16 +55,13 @@ public class GUI extends JPanel {
         startButton.setPreferredSize(new Dimension(75, 40));
 
         ActionListener buttonHandler;
-        buttonHandler = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (timer.isRunning()) {
-                    timer.stop();
-                    startButton.setText("start");
-                } else {
-                    timer.start();
-                    startButton.setText("stop");
-                }
+        buttonHandler = e -> {
+            if (timer.isRunning()) {
+                timer.stop();
+                startButton.setText("start");
+            } else {
+                timer.start();
+                startButton.setText("stop");
             }
         };
         startButton.addActionListener(buttonHandler);
@@ -73,7 +70,7 @@ public class GUI extends JPanel {
 
     private void initSlider() {
         gridSlider = new JSlider(JSlider.HORIZONTAL, 9, 100, 50);
-        gridSlider.setPreferredSize(new Dimension(400,30));
+        gridSlider.setPreferredSize(new Dimension(400,25));
 
         ChangeListener changeListener = e -> {
             JSlider source = (JSlider)e.getSource();
@@ -91,8 +88,6 @@ public class GUI extends JPanel {
             PlayGround.evolve();
             repaint();
             invalidate();
-            System.out.print("Test\n"); //TODO PM: remove print
-
         };
 
         timer = new Timer(100, tickEvent);
@@ -101,8 +96,38 @@ public class GUI extends JPanel {
 
     //TODO PM: Here you go
     private void initModel() {
-        String[] selection = new String[] {"Empty", "Glider", "Small Exploder"};
+        String[] selection = new String[] {"Empty", "Glider", "Small Exploder", "Exploder", "Spaceship", "Tumbler"};
         modelComboBox = new JComboBox(selection);
+
+        ActionListener comboBoxHandler = e -> {
+            JComboBox source = (JComboBox)e.getSource();
+            int val = source.getSelectedIndex();
+
+            //clear before adding stuff
+            PlayGround.clearGameArray();
+            switch (val) {
+                case 1:
+                    PlayGround.spawnGlider();
+                    break;
+                case 2:
+                    PlayGround.spawnSmallExploder();
+                    break;
+                case 3:
+                    PlayGround.spawnExploder();
+                    break;
+                case 4:
+                    PlayGround.spawnSpaceShip();
+                    break;
+                case 5:
+                    PlayGround.spawnTumbler();
+                    break;
+                default:
+                    //do nothing
+                    break;
+            }
+            repaint();
+        };
+        modelComboBox.addActionListener(comboBoxHandler);
     }
 
 
