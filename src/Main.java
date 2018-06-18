@@ -10,12 +10,13 @@ public class Main {
     }
 
     public Main() {
-        EventQueue.invokeLater(() -> { //that's pretty amazing that arrow there replaces a whole call to a new sth and function head
+        EventQueue.invokeLater(() -> { //that's pretty amazing that arrow there replaces a whole call to a new sth and function head (anonymous class)
             try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //display the GUI in a nice way
+
             }
             catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-                //test for linux / windows and check what happens there...
+                //ignore if this doesn't work
             }
 
             JFrame frame = new JFrame("Conway's Game of Life - by offsec1");
