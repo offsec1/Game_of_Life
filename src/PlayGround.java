@@ -8,15 +8,27 @@ public class PlayGround {
     private static boolean[][] gameArray;
     private static boolean[][] evolvedArray;
 
+    /**
+     * sets the size of the gameArray
+     * @param fieldLen the size of the matrix
+     */
     public static void setN(int fieldLen) {
         n = fieldLen + OFFSET;
         gameArray = new boolean[n][n];
     }
 
+    /**
+     * get size of the Array (one number since it's always a matrix)
+     * @return size of gameArray
+     */
     public static int getN() {
         return n - OFFSET;
     }
 
+    /**
+     * gets the gameArray
+     * @return 2D boolean Array
+     */
     public static boolean[][] getGameArray() {
         if (gameArray == null) {
             gameArray = new boolean[n][n];
@@ -24,15 +36,27 @@ public class PlayGround {
         return gameArray;
     }
 
+    /**
+     * change the value of a specific index in the gameArray to either true or false depending on the old value
+     * @param i first index (gameArray[i][j])
+     * @param j second index (gameArray[i][j])
+     */
     public static void changeIndexValue(int i, int j) {
         gameArray[i][j] = !gameArray[i][j];
     }
 
+    /**
+     * initialise the gameArray
+     * @param fieldLen sets the size of the gameArray
+     */
     public static void init(int fieldLen) {
         n = fieldLen + OFFSET;
         gameArray = new boolean[n][n];
     }
 
+    /**
+     * sets the whole gameArray to false values
+     */
     public static void clearGameArray() {
         for (int i = 0; i < n; i++)
             Arrays.fill(gameArray[i], false);
@@ -106,6 +130,10 @@ public class PlayGround {
         return dest;
     }
 
+    /**
+     * create the Glider
+     * sets the right values in the gameArray to true
+     */
     public static void spawnGlider() {
         int middle = n / 2 - 1;
 
@@ -117,6 +145,10 @@ public class PlayGround {
         changeIndexValue(middle + 1, middle - 2);
     }
 
+    /**
+     * create the Small Exploder
+     * sets the right values in the gameArray to true
+     */
     public static void spawnSmallExploder() {
         int middle = n / 2 - 1;
 
@@ -129,6 +161,10 @@ public class PlayGround {
         changeIndexValue(middle + 2, middle);
     }
 
+    /**
+     * create the Big Exploder
+     * sets the right values in the gameArray to true
+     */
     public static void spawnExploder() {
         int middle = n / 2 - 1;
 
@@ -146,6 +182,10 @@ public class PlayGround {
         changeIndexValue(middle + 2, middle - 2);
     }
 
+    /**
+     * create the Space Ship
+     * sets the right values in the gameArray to true
+     */
     public static void spawnSpaceShip() {
         int middle = n / 2 - 1;
 
@@ -160,6 +200,10 @@ public class PlayGround {
         changeIndexValue(middle + 1, middle - 2);
     }
 
+    /**
+     * create the Tumbler
+     * sets the right values in the gameArray to true
+     */
     public static void spawnTumbler() {
         int middle = n / 2 - 1;
 

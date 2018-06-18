@@ -1,7 +1,6 @@
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI extends JPanel {
@@ -94,7 +93,6 @@ public class GUI extends JPanel {
         timer.setRepeats(true);
     }
 
-    //TODO PM: Here you go
     private void initModel() {
         String[] selection = new String[] {"Empty", "Glider", "Small Exploder", "Exploder", "Spaceship", "Tumbler"};
         modelComboBox = new JComboBox(selection);
