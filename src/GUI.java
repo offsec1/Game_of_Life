@@ -12,6 +12,9 @@ public class GUI extends JPanel {
     private JComboBox modelComboBox;
     private Timer timer;
 
+    /**
+     * constructor for user interface
+     */
     public GUI() {
 
         //Panel settings
@@ -42,12 +45,18 @@ public class GUI extends JPanel {
         add(modelComboBox, BorderLayout.SOUTH);
     }
 
+    /**
+     * initialise settings for the grid
+     */
     private void initGrid() {
         grid = new MyJGrid();
         grid.setLayout(new BorderLayout());
         grid.setPreferredSize(new Dimension(550, 550));
     }
 
+    /**
+     * initialise settings for the button
+     */
     private void initButton() {
         startButton = new JButton("start");
         startButton.setLayout(new BorderLayout());
@@ -66,7 +75,9 @@ public class GUI extends JPanel {
         startButton.addActionListener(buttonHandler);
     }
 
-
+    /**
+     * initialise settings for the slider
+     */
     private void initSlider() {
         gridSlider = new JSlider(JSlider.HORIZONTAL, 9, 100, 50);
         gridSlider.setPreferredSize(new Dimension(400,25));
@@ -81,6 +92,9 @@ public class GUI extends JPanel {
         gridSlider.addChangeListener(changeListener);
     }
 
+    /**
+     * initialise settings for the timer (used for the evolving process)
+     */
     private void initTimer() {
         ActionListener tickEvent = e -> {
             //Live goes on
@@ -93,6 +107,9 @@ public class GUI extends JPanel {
         timer.setRepeats(true);
     }
 
+    /**
+     * initialise settings for the model (contains the preconfigured objects eg. glider)
+     */
     private void initModel() {
         String[] selection = new String[] {"Empty", "Glider", "Small Exploder", "Exploder", "Spaceship", "Tumbler"};
         modelComboBox = new JComboBox(selection);

@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author s0563806
+ */
 public class Main {
 
     /**

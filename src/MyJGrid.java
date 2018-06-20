@@ -5,15 +5,22 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Own JComponent for implementing the grid in a nice way
+ */
 public class MyJGrid extends JComponent {
 
     private List<Rectangle> cells;
     private Point selectedCell;
 
+    /**
+     * constructor - includes the click handler which turns the selected cell to true or false
+     */
     public MyJGrid() {
 
         cells = new ArrayList<>(PlayGround.getN() * PlayGround.getN());
         MouseAdapter clickHandler;
+        //click handling
         clickHandler = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
