@@ -52,6 +52,9 @@ public class MyJGrid extends JComponent {
         addMouseListener(clickHandler);
     }
 
+    /**
+     * clears the selected cell and the cell array on invalidation
+     */
     @Override
     public void invalidate() {
         cells.clear();
@@ -59,6 +62,10 @@ public class MyJGrid extends JComponent {
         super.invalidate();
     }
 
+    /**
+     * paints the grid
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
